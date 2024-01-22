@@ -54,14 +54,14 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-            Expanded(
-                child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
-              itemBuilder: (context, index) {
-                return GroceryItemTile();
-              },
-            ))
+            // Expanded(
+            //     child: GridView.builder(
+            //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //       crossAxisCount: 2),
+            //   itemBuilder: (context, index) {
+            //     return GroceryItemTile();
+            //   },
+            // ))
           ],
         ),
       ),
