@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:groceryshop/model/cart_model.dart';
+import 'package:provider/provider.dart';
 
 import '../components/grocery_item_tile.dart';
 
@@ -38,8 +40,8 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 24),
 
             //divider
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: Divider(),
             ),
 
@@ -54,14 +56,26 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-            // Expanded(
-            //     child: GridView.builder(
-            //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //       crossAxisCount: 2),
-            //   itemBuilder: (context, index) {
-            //     return GroceryItemTile();
-            //   },
-            // ))
+            Expanded(
+              child: Consumer<CartModel>(
+                builder: (context, value, child) {
+                  return GridView.builder(
+                    itemCount: value.shopItems.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                    itemBuilder: (context, index) {
+                      return GroceryItemTile(
+                        itemName: value.shopItems[index][0],
+                        itemPrice: value.shopItems[index][1],
+                        imagePath: value.shopItems[index][2],
+                        color: value.shopItems[index][3],
+                      );
+                    },
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
