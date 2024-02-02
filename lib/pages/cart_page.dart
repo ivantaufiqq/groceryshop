@@ -13,6 +13,7 @@ class CartPage extends StatelessWidget {
         builder: (context, value, child) {
           return Column(
             children: [
+              //list of cart items
               Expanded(
                 child: ListView.builder(
                   itemCount: value.cartItems.length,
@@ -44,6 +45,37 @@ class CartPage extends StatelessWidget {
                   },
                 ),
               ),
+
+              //total + pay now
+              Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Container(
+                  decoration: BoxDecoration(color: Colors.green),
+                  padding: EdgeInsets.all(24),
+                  child: Row(
+                    children: [
+                      //price
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Total Price",
+                            style: TextStyle(color: Colors.grey[100]),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            "\Rp" + value.calculateTotal(),
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           );
         },
