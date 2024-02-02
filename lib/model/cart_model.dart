@@ -35,6 +35,6 @@ class CartModel extends ChangeNotifier {
     for (int i = 0; i < _cartItems.length; i++) {
       totalPrice += double.parse(_cartItems[i][1]);
     }
-    return totalPrice.toStringAsFixed(2);
+    return totalPrice.toStringAsFixed(3);
   }
 }
